@@ -1,0 +1,2733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELOURA — Haute Beauté & Parfum | Paris</title>
+  
+  <!-- Premium Google Fonts: Cormorant Garamond & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. LUXURY DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-dark: #080808;
+      --bg-dark-accent: #12100F;
+      --bg-light: #F8F5F0;
+      --bg-card: #EFECE6;
+      --bg-espresso: #181311;
+      
+      --text-dark: #111111;
+      --text-muted-dark: #635E58;
+      --text-light: #F8F5F0;
+      --text-muted-light: #B0A9A2;
+      
+      --champagne: #E6DCCD;
+      --soft-beige: #EBE5DB;
+      --gold: #C6A052;
+      --gold-muted: rgba(198, 160, 82, 0.35);
+      --gold-light: #E0C896;
+
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(17, 17, 17, 0.08);
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base Styling */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      outline: none;
+    }
+
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-light); }
+    ::-webkit-scrollbar-thumb { background: #C5BCB0; }
+
+    /* Image Fallback Container (Prevents Broken Image Icons) */
+    .img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1A1614 0%, #2A2320 100%);
+      overflow: hidden;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.6s ease, transform 0.8s var(--ease-out-expo);
+    }
+
+    .img-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1C1816 0%, #29221F 100%);
+      color: var(--champagne);
+      font-family: var(--font-serif);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .img-fallback-logo {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Typography Utility Classes */
+    .heading-xl {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 7.5vw, 8rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+
+    .heading-lg {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.8vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .heading-md {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--text-muted-dark);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .eyebrow-light { color: var(--text-muted-light); }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+
+    @media (max-width: 1024px) { .container { padding: 0 2rem; } }
+    @media (max-width: 640px) { .container { padding: 0 1.25rem; } }
+
+    .section-padding {
+      padding-top: 9rem;
+      padding-bottom: 9rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.15rem 2.6rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--text-dark);
+      color: var(--bg-light);
+      border: 1px solid var(--text-dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-dark);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-dark);
+      border: 1px solid var(--text-dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--text-dark);
+      color: var(--bg-light);
+    }
+
+    .btn-light {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      border: 1px solid var(--bg-light);
+    }
+
+    .btn-light:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg-dark);
+    }
+
+    .btn-outline-light {
+      background-color: transparent;
+      color: var(--bg-light);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--bg-light);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    /* Reveal Animation Utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       2. CUSTOM CURSOR
+       ========================================================================== */
+    #cursor-dot, #cursor-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out, width 0.3s var(--ease-out-expo), height 0.3s var(--ease-out-expo), background-color 0.3s ease, border-color 0.3s ease;
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      #cursor-dot, #cursor-follower { display: block; }
+    }
+
+    #cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-dark);
+    }
+
+    #cursor-follower {
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(17, 17, 17, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #cursor-text {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      color: var(--text-dark);
+    }
+
+    body.dark-mode #cursor-dot { background-color: var(--bg-light); }
+    body.dark-mode #cursor-follower { border-color: rgba(248, 245, 240, 0.35); }
+    body.dark-mode #cursor-text { color: var(--bg-light); }
+
+    .cursor-hover #cursor-follower {
+      width: 72px;
+      height: 72px;
+      background-color: rgba(198, 160, 82, 0.15);
+      border-color: var(--gold);
+    }
+    .cursor-hover #cursor-text { opacity: 1; }
+
+    /* ==========================================================================
+       3. NAVIGATION BAR
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 2.2rem 4rem;
+      transition: var(--transition-smooth);
+    }
+
+    .site-header.scrolled {
+      padding: 1.1rem 4rem;
+      background-color: rgba(248, 245, 240, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    @media (max-width: 1024px) {
+      .site-header { padding: 1.5rem 2rem; }
+      .site-header.scrolled { padding: 1rem 2rem; }
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+
+    .brand-logo {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      transition: opacity 0.3s ease;
+    }
+
+    .brand-logo:hover { opacity: 0.8; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+    }
+
+    @media (max-width: 992px) { .nav-links { display: none; } }
+
+    .nav-link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0.4rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--text-dark);
+      transition: width 0.4s var(--ease-out-expo);
+    }
+
+    .nav-link:hover::after { width: 100%; }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .action-btn {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .bag-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: var(--text-dark);
+      color: var(--bg-light);
+      font-size: 0.6rem;
+      font-weight: 600;
+      margin-left: 0.2rem;
+    }
+
+    .mobile-menu-trigger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    .mobile-menu-trigger span {
+      width: 24px;
+      height: 1px;
+      background-color: var(--text-dark);
+      transition: var(--transition-fast);
+    }
+
+    @media (max-width: 992px) { .mobile-menu-trigger { display: flex; } }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s var(--ease-out-expo);
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+
+    .mobile-nav-link {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 8rem;
+      background-color: var(--bg-light);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid { grid-template-columns: 1fr; padding-bottom: 4rem; }
+    }
+
+    .hero-content {
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-title {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      color: var(--text-muted-dark);
+      line-height: 1.85;
+      margin-bottom: 3rem;
+      max-width: 480px;
+      font-weight: 300;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      height: 82vh;
+      width: 100%;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: -2rem;
+      background-color: rgba(8, 8, 8, 0.88);
+      backdrop-filter: blur(12px);
+      color: var(--bg-light);
+      padding: 1.5rem 2.2rem;
+      border: 1px solid var(--border-dark);
+      z-index: 3;
+    }
+
+    @media (max-width: 640px) {
+      .hero-badge { display: none; }
+      .hero-image-wrapper { height: 58vh; }
+    }
+
+    .hero-badge-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+
+    .hero-badge-subtitle {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.3rem;
+    }
+
+    /* ==========================================================================
+       5. HOUSE OF VELOURA (PHILOSOPHY)
+       ========================================================================== */
+    .philosophy-section {
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .philosophy-grid { grid-template-columns: 1fr; gap: 4rem; }
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: 2.5rem;
+    }
+
+    .philosophy-quote span {
+      font-style: italic;
+      color: var(--champagne);
+    }
+
+    .philosophy-body {
+      font-size: 1rem;
+      color: var(--text-muted-light);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .philosophy-img-main {
+      width: 100%;
+      height: 650px;
+    }
+
+    @media (max-width: 640px) {
+      .philosophy-img-main { height: 420px; }
+    }
+
+    /* ==========================================================================
+       6. FEATURED COLLECTION & FILTERS
+       ========================================================================== */
+    .collection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .collection-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.8rem;
+    }
+
+    .filter-btn {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+      transition: color 0.3s ease;
+      position: relative;
+      padding-bottom: 0.8rem;
+      margin-bottom: -0.85rem;
+    }
+
+    .filter-btn.active, .filter-btn:hover { color: var(--text-dark); }
+
+    .filter-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--text-dark);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .product-grid { grid-template-columns: 1fr; } }
+
+    .product-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-image-box {
+      position: relative;
+      width: 100%;
+      padding-top: 130%; /* 4:5 aspect ratio */
+      background-color: var(--bg-card);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-image-box .img-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .product-card:hover .product-image-box img { transform: scale(1.06); }
+
+    .product-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 8, 8, 0.28);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 4;
+    }
+
+    .product-card:hover .product-card-overlay { opacity: 1; }
+
+    .quick-actions {
+      display: flex;
+      gap: 0.8rem;
+      width: 100%;
+      transform: translateY(15px);
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+
+    .product-card:hover .quick-actions { transform: translateY(0); }
+
+    .quick-btn {
+      flex: 1;
+      padding: 0.85rem 0;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      font-weight: 600;
+      text-align: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .quick-btn:hover {
+      background: var(--text-dark);
+      color: var(--bg-light);
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(248, 245, 240, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: var(--transition-fast);
+      color: var(--text-dark);
+    }
+
+    .wishlist-btn.active {
+      color: var(--gold);
+      background-color: var(--bg-dark);
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-number {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .product-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .product-category { font-size: 0.72rem; color: var(--text-muted-dark); }
+    .product-price { font-size: 0.9rem; font-weight: 500; }
+
+    /* ==========================================================================
+       7. EDITORIAL CAMPAIGN BANNER
+       ========================================================================== */
+    .editorial-section {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      overflow: hidden;
+    }
+
+    .editorial-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .editorial-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      filter: brightness(0.85);
+      transition: transform 10s ease-out;
+    }
+
+    .editorial-section:hover .editorial-bg img { transform: scale(1.08); }
+
+    .editorial-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 820px;
+      padding: 0 2rem;
+    }
+
+    .editorial-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6.5vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 1.8rem;
+    }
+
+    .editorial-quote {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--champagne);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       8. FRAGRANCE EXPLORER & PYRAMID SECTION
+       ========================================================================== */
+    .fragrance-section {
+      background-color: var(--bg-espresso);
+      color: var(--bg-light);
+      position: relative;
+    }
+
+    .fragrance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) { .fragrance-grid { grid-template-columns: 1fr; gap: 4rem; } }
+
+    .fragrance-pyramid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pyramid-level {
+      border-left: 2px solid var(--gold);
+      padding-left: 1.8rem;
+    }
+
+    .pyramid-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .pyramid-notes {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--bg-light);
+    }
+
+    .pyramid-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted-light);
+      margin-top: 0.3rem;
+    }
+
+    /* ==========================================================================
+       9. BEAUTY CATEGORIES
+       ========================================================================== */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) { .categories-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .categories-grid { grid-template-columns: 1fr; } }
+
+    .category-card {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 2.5rem;
+      color: var(--bg-light);
+    }
+
+    .category-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .category-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease-out-expo), filter 0.8s ease;
+      filter: brightness(0.8);
+    }
+
+    .category-card:hover .category-bg img {
+      transform: scale(1.08);
+      filter: brightness(0.9);
+    }
+
+    .category-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .category-name {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-link-text {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .category-card:hover .category-link-text { gap: 1rem; color: var(--bg-light); }
+
+    /* ==========================================================================
+       10. VELOURA JOURNAL / EDITORIAL MAGAZINE
+       ========================================================================== */
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    @media (max-width: 900px) { .journal-grid { grid-template-columns: 1fr; } }
+
+    .journal-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .journal-img-box {
+      width: 100%;
+      height: 380px;
+      margin-bottom: 1.8rem;
+    }
+
+    .journal-date {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .journal-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+      transition: color 0.3s ease;
+    }
+
+    .journal-card:hover .journal-title { color: var(--gold); }
+
+    .journal-snippet {
+      font-size: 0.88rem;
+      color: var(--text-muted-dark);
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       11. PRESS & ACCOLADES SLIDER
+       ========================================================================== */
+    .press-section {
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      text-align: center;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .press-quote-box {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .press-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.25;
+      color: var(--champagne);
+      margin-bottom: 2rem;
+    }
+
+    .press-author {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ==========================================================================
+       12. PRIVATE ATELIER CONSULTATION
+       ========================================================================== */
+    .atelier-section {
+      background-color: var(--bg-light);
+      position: relative;
+    }
+
+    .atelier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) { .atelier-grid { grid-template-columns: 1fr; gap: 3.5rem; } }
+
+    .atelier-img-box {
+      width: 100%;
+      height: 600px;
+    }
+
+    /* ==========================================================================
+       13. SHADE FINDER QUIZ SECTION
+       ========================================================================== */
+    .shade-finder-box {
+      background-color: var(--bg-dark-accent);
+      color: var(--bg-light);
+      padding: 5rem;
+      border: 1px solid var(--border-dark);
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 640px) { .shade-finder-box { padding: 2.5rem 1.5rem; } }
+
+    .quiz-options {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .quiz-opt-btn {
+      padding: 1rem 2rem;
+      border: 1px solid var(--border-dark);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: var(--transition-fast);
+      color: var(--text-muted-light);
+    }
+
+    .quiz-opt-btn:hover, .quiz-opt-btn.active {
+      border-color: var(--gold);
+      color: var(--bg-light);
+      background-color: rgba(198, 160, 82, 0.12);
+    }
+
+    /* ==========================================================================
+       14. SIGNATURE PRODUCT SPOTLIGHT
+       ========================================================================== */
+    .signature-section {
+      background-color: var(--bg-espresso);
+      color: var(--bg-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) { .signature-grid { grid-template-columns: 1fr; gap: 4rem; } }
+
+    .signature-main-img { width: 100%; height: 700px; }
+
+    @media (max-width: 640px) { .signature-main-img { height: 450px; } }
+
+    .signature-badge {
+      position: absolute;
+      top: 3rem;
+      right: -2rem;
+      background: var(--gold);
+      color: var(--bg-dark);
+      padding: 1rem 1.8rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .ingredients-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      border-top: 1px solid var(--border-dark);
+      padding-top: 2rem;
+    }
+
+    .ingredient-item-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--bg-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .ingredient-item-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted-light);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       15. RITUALS
+       ========================================================================== */
+    .ritual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+      margin-top: 5rem;
+    }
+
+    @media (max-width: 900px) { .ritual-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    .ritual-card {
+      border-top: 1px solid var(--border-light);
+      padding-top: 2.5rem;
+    }
+
+    .ritual-number {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .ritual-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .ritual-text {
+      font-size: 0.92rem;
+      color: var(--text-muted-dark);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       16. STORY MANIFESTO
+       ========================================================================== */
+    .story-section {
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      text-align: center;
+    }
+
+    .story-content { max-width: 880px; margin: 0 auto; }
+
+    .story-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
+      text-transform: uppercase;
+    }
+
+    .story-body {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--champagne);
+    }
+
+    /* ==========================================================================
+       17. NEWSLETTER
+       ========================================================================== */
+    .newsletter-section {
+      background-color: var(--bg-light);
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .newsletter-box { max-width: 580px; margin: 0 auto; }
+
+    .newsletter-title {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted-dark);
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .newsletter-form {
+      display: flex;
+      border-bottom: 1px solid var(--text-dark);
+      padding-bottom: 0.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
+      color: var(--text-dark);
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--text-muted-dark);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+    }
+
+    .newsletter-submit {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .newsletter-submit:hover { color: var(--gold); }
+
+    /* ==========================================================================
+       18. FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(4, 1fr);
+      gap: 4rem;
+      margin-bottom: 6rem;
+    }
+
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+    @media (max-width: 640px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted-light);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .footer-col-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      font-weight: 600;
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: 1rem; }
+
+    .footer-link {
+      font-size: 0.82rem;
+      color: var(--text-muted-light);
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover { color: var(--bg-light); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-dark);
+      font-size: 0.75rem;
+      color: var(--text-muted-light);
+    }
+
+    @media (max-width: 640px) { .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; } }
+
+    .footer-legal { display: flex; gap: 2rem; }
+
+    /* ==========================================================================
+       19. SHOPPING BAG DRAWER
+       ========================================================================== */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .drawer-backdrop.active { opacity: 1; pointer-events: auto; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background-color: var(--bg-light);
+      z-index: 2001;
+      transform: translateX(100%);
+      transition: transform 0.5s var(--ease-out-expo);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.active { transform: translateX(0); }
+
+    .cart-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-title { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 300; }
+
+    .close-drawer {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted-dark);
+    }
+
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .cart-empty-msg {
+      text-align: center;
+      margin: auto 0;
+      color: var(--text-muted-dark);
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1.2rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 1.5rem;
+    }
+
+    .cart-item-img-box { width: 80px; height: 100px; flex-shrink: 0; }
+
+    .cart-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cart-item-title { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; }
+    .cart-item-price { font-size: 0.85rem; font-weight: 500; }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-light);
+    }
+
+    .qty-btn { padding: 0.2rem 0.6rem; font-size: 0.8rem; }
+    .qty-num { padding: 0.2rem 0.6rem; font-size: 0.75rem; }
+
+    .remove-item {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .cart-footer {
+      padding: 2rem;
+      border-top: 1px solid var(--border-light);
+      background-color: var(--bg-card);
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .cart-shipping-note {
+      font-size: 0.75rem;
+      color: var(--text-muted-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==========================================================================
+       20. SEARCH OVERLAY
+       ========================================================================== */
+    .search-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(8, 8, 8, 0.96);
+      backdrop-filter: blur(15px);
+      z-index: 2500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out-expo);
+      color: var(--bg-light);
+      display: flex;
+      flex-direction: column;
+      padding: 4rem;
+    }
+
+    @media (max-width: 640px) { .search-overlay { padding: 2rem 1.5rem; } }
+
+    .search-overlay.active { opacity: 1; pointer-events: auto; }
+
+    .search-header { display: flex; justify-content: flex-end; }
+
+    .search-container { max-width: 900px; width: 100%; margin: 4rem auto 0; }
+
+    .search-input-wrapper {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .search-input {
+      width: 100%;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--bg-light);
+    }
+
+    .search-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+    .suggested-tags {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .tag-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+    .tag-btn {
+      font-size: 0.75rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      color: var(--text-muted-light);
+      transition: var(--transition-fast);
+    }
+
+    .tag-btn:hover { border-color: var(--bg-light); color: var(--bg-light); }
+
+    .search-results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-height: 45vh;
+      overflow-y: auto;
+    }
+
+    @media (max-width: 768px) { .search-results-grid { grid-template-columns: 1fr; } }
+
+    /* ==========================================================================
+       21. PRODUCT DETAIL MODAL
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
+
+    .product-modal {
+      background-color: var(--bg-light);
+      width: 100%;
+      max-width: 1100px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    @media (max-width: 900px) { .product-modal { grid-template-columns: 1fr; } }
+
+    .modal-gallery { height: 100%; min-height: 500px; }
+
+    .modal-details {
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 640px) { .modal-details { padding: 2rem; } }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-product-title { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; margin-bottom: 0.5rem; }
+    .modal-product-price { font-size: 1.2rem; font-weight: 500; margin-bottom: 1.5rem; }
+    .modal-product-desc { font-size: 0.9rem; color: var(--text-muted-dark); line-height: 1.8; margin-bottom: 2rem; font-weight: 300; }
+
+    .size-selector { margin-bottom: 2rem; }
+    .size-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+    .size-options { display: flex; gap: 0.8rem; }
+    .size-btn { padding: 0.6rem 1.2rem; border: 1px solid var(--border-light); font-size: 0.75rem; transition: var(--transition-fast); }
+    .size-btn.active { border-color: var(--text-dark); background-color: var(--text-dark); color: var(--bg-light); }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--bg-dark);
+      color: var(--bg-light);
+      padding: 1rem 2rem;
+      border: 1px solid var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 4000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s var(--ease-out-expo);
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-follower"><span id="cursor-text"></span></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Added to Bag</div>
+
+  <!-- Dynamic Backdrop -->
+  <div id="backdrop" class="drawer-backdrop"></div>
+
+  <!-- ==========================================================================
+     NAVIGATION BAR
+     ========================================================================== -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" data-cursor="VELOURA">VELOURA</a>
+      
+      <nav class="nav-links">
+        <a href="#collection" class="nav-link">Collection</a>
+        <a href="#categories" class="nav-link">Beauty</a>
+        <a href="#fragrance" class="nav-link">Fragrance</a>
+        <a href="#journal" class="nav-link">Journal</a>
+        <a href="#story" class="nav-link">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="action-btn" id="open-search" data-cursor="SEARCH">Search</button>
+        <button class="action-btn" id="open-cart" data-cursor="BAG">
+          Bag <span class="bag-count" id="cart-count">0</span>
+        </button>
+        <div class="mobile-menu-trigger" id="mobile-trigger">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-nav-overlay" id="mobile-nav">
+    <div class="mobile-nav-links">
+      <a href="#collection" class="mobile-nav-link mobile-close-link">Collection</a>
+      <a href="#categories" class="mobile-nav-link mobile-close-link">Beauty Categories</a>
+      <a href="#fragrance" class="mobile-nav-link mobile-close-link">Fragrance House</a>
+      <a href="#journal" class="mobile-nav-link mobile-close-link">The Journal</a>
+      <a href="#story" class="mobile-nav-link mobile-close-link">About Veloura</a>
+    </div>
+    <p class="eyebrow eyebrow-light">PARIS — NEW YORK — TOKYO</p>
+  </div>
+
+  <!-- ==========================================================================
+     SEARCH OVERLAY
+     ========================================================================== -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-header">
+      <button class="action-btn" id="close-search" style="color: var(--bg-light);">CLOSE [X]</button>
+    </div>
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <input type="text" id="search-input" class="search-input" placeholder="SEARCH VELOURA..." autocomplete="off">
+      </div>
+      <div class="suggested-tags">
+        <span class="tag-label">Suggested:</span>
+        <button class="tag-btn" data-search="Serum">Serum</button>
+        <button class="tag-btn" data-search="Foundation">Foundation</button>
+        <button class="tag-btn" data-search="Lip">Lip Color</button>
+        <button class="tag-btn" data-search="Fragrance">Fragrance</button>
+        <button class="tag-btn" data-search="Iris">Iris Extrait</button>
+      </div>
+      <div class="search-results-grid" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+     SHOPPING BAG DRAWER
+     ========================================================================== -->
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3 class="cart-title">Your Shopping Bag</h3>
+      <span class="close-drawer" id="close-cart">&times;</span>
+    </div>
+    <div class="cart-body" id="cart-items-container">
+      <!-- Injected via JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal</span>
+        <span id="cart-subtotal-val">$0</span>
+      </div>
+      <p class="cart-shipping-note">Complimentary shipping and signature velvet gift box included on all orders.</p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="alert('Proceeding to Veloura Paris Checkout...')">PROCEED TO CHECKOUT</button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+     PRODUCT DETAIL MODAL
+     ========================================================================== -->
+  <div class="modal-backdrop" id="product-modal-backdrop">
+    <div class="product-modal" id="product-modal">
+      <span class="modal-close" id="close-product-modal">&times;</span>
+      <div class="modal-gallery">
+        <div class="img-wrapper">
+          <img id="modal-img" src="" alt="">
+          <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Product Image</span></div>
+        </div>
+      </div>
+      <div class="modal-details">
+        <span class="eyebrow" id="modal-number">VELOURA NO. 01</span>
+        <h2 class="modal-product-title" id="modal-title">Product Name</h2>
+        <div class="modal-product-price" id="modal-price">$0</div>
+        <p class="modal-product-desc" id="modal-desc">Detailed product description goes here.</p>
+        
+        <div class="size-selector">
+          <span class="size-label">Select Volume / Size</span>
+          <div class="size-options">
+            <button class="size-btn active">30 ML</button>
+            <button class="size-btn">50 ML</button>
+            <button class="size-btn">100 ML</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="modal-add-btn" style="margin-top: auto; width: 100%;">ADD TO BAG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+     MAIN CONTENT
+     ========================================================================== -->
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content reveal">
+            <span class="eyebrow">THE NEW BEAUTY HOUSE</span>
+            <h1 class="heading-xl hero-title">Beauty,<br>Refined.</h1>
+            <p class="hero-description">
+              Exceptional beauty essentials created for those who understand that true luxury is never loud. Formulated in Paris with absolute precision.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#collection" class="btn btn-primary" data-cursor="EXPLORE">EXPLORE COLLECTION</a>
+              <a href="#story" class="btn btn-secondary">DISCOVER VELOURA</a>
+            </div>
+          </div>
+          
+          <div class="hero-image-wrapper reveal" data-cursor="VIEW">
+            <div class="img-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1600&q=85" alt="Veloura Campaign Model" onerror="handleImgError(this, 'HERO CAMPAIGN')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Paris Campaign 2026</span></div>
+            </div>
+            <div class="hero-badge">
+              <div class="hero-badge-title">Éclat Luminous Serum</div>
+              <div class="hero-badge-subtitle">Flagship Formula 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOUSE OF VELOURA (PHILOSOPHY) -->
+    <section class="philosophy-section section-padding" id="philosophy">
+      <div class="container">
+        <div class="philosophy-grid">
+          <div class="philosophy-media reveal" data-cursor="HOUSE">
+            <div class="img-wrapper philosophy-img-main">
+              <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80" alt="Veloura Philosophy" onerror="handleImgError(this, 'ATELIER PARIS')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>The Paris Atelier</span></div>
+            </div>
+          </div>
+          <div class="philosophy-content reveal">
+            <span class="eyebrow eyebrow-light">THE HOUSE OF VELOURA</span>
+            <h2 class="philosophy-quote">
+              "Veloura was created around a simple belief: <span>Beauty should never be ordinary.</span>"
+            </h2>
+            <p class="philosophy-body">
+              Born from the desire to unite couture craftsmanship with state-of-the-art dermatological science, Veloura creates tactile objects of desire. Every formula is distilled into pure efficacy, housed in weighted glass designed to endure.
+            </p>
+            <a href="#story" class="btn btn-outline-light">READ THE MANIFESTO</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED COLLECTION -->
+    <section class="section-padding" id="collection">
+      <div class="container">
+        <div class="collection-header reveal">
+          <div>
+            <span class="eyebrow">CURATED SELECTION</span>
+            <h2 class="heading-lg">THE COLLECTION</h2>
+          </div>
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="skin">SKIN</button>
+            <button class="filter-btn" data-filter="makeup">MAKEUP</button>
+            <button class="filter-btn" data-filter="fragrance">FRAGRANCE</button>
+            <button class="filter-btn" data-filter="gifting">GIFT SETS</button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="main-product-grid">
+          <!-- Dynamic rendering via JavaScript -->
+        </div>
+
+        <!-- SHADE FINDER QUIZ CTA BOX -->
+        <div class="shade-finder-box reveal">
+          <span class="eyebrow eyebrow-light">COMPLIMENTARY DIAGNOSIS</span>
+          <h3 class="heading-md" style="margin-bottom: 1rem;">FIND YOUR PERFECT SHADE & FORMULA</h3>
+          <p style="max-width: 540px; margin: 0 auto; color: var(--text-muted-light); font-size: 0.95rem;">
+            Answer three subtle questions to receive an tailored recommendation from our Paris colorists.
+          </p>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" onclick="runShadeFinder('radiance')">Radiance & Dewy Finish</button>
+            <button class="quiz-opt-btn" onclick="runShadeFinder('velvet')">Velvet Matte Couture</button>
+            <button class="quiz-opt-btn" onclick="runShadeFinder('hydrating')">Deep Hydration & Skin Barrier</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL CAMPAIGN BANNER -->
+    <section class="editorial-section">
+      <div class="editorial-bg">
+        <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1800&q=85" alt="Editorial Campaign" onerror="handleImgError(this, 'CAMPAIGN EDITORIAL')">
+        <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Couture Campaign</span></div>
+      </div>
+      <div class="editorial-content reveal">
+        <span class="eyebrow eyebrow-light">SPRING COUTURE EDITION</span>
+        <h2 class="editorial-title">THE NEW ESSENTIALS</h2>
+        <p class="editorial-quote">"Designed for the rituals that become your signature."</p>
+        <a href="#collection" class="btn btn-light" data-cursor="DISCOVER">DISCOVER THE EDIT</a>
+      </div>
+    </section>
+
+    <!-- FRAGRANCE HOUSE & SCENT PYRAMID -->
+    <section class="fragrance-section section-padding" id="fragrance">
+      <div class="container">
+        <div class="fragrance-grid">
+          <div class="reveal">
+            <span class="eyebrow eyebrow-light">HAUTE PARFUMERIE</span>
+            <h2 class="heading-lg" style="margin-bottom: 1.5rem;">THE ARCHITECTURE OF SCENT</h2>
+            <p style="color: var(--text-muted-light); line-height: 1.8; font-weight: 300;">
+              Formulated in Grasse, France, Veloura extraits de parfum utilize rare floral absolutes and aged resins. Each fragrance unfolds over hours into an intimate personal aura.
+            </p>
+
+            <div class="fragrance-pyramid">
+              <div class="pyramid-level">
+                <div class="pyramid-label">TOP NOTES — FIRST IMPRESSION</div>
+                <div class="pyramid-notes">Calabrian Bergamot & Pink Pepper</div>
+                <div class="pyramid-desc">Immediate effervescence that introduces the olfactory composition.</div>
+              </div>
+
+              <div class="pyramid-level">
+                <div class="pyramid-label">HEART NOTES — THE SOUL</div>
+                <div class="pyramid-notes">Florentine Sacred Iris Root & Damask Rose</div>
+                <div class="pyramid-desc">The velvety core that lingers upon skin throughout the day.</div>
+              </div>
+
+              <div class="pyramid-level">
+                <div class="pyramid-label">BASE NOTES — THE SIGNATURE</div>
+                <div class="pyramid-notes">Smoked Vanilla Bean & Aged Golden Amber</div>
+                <div class="pyramid-desc">A deep, seductive foundation that creates an unmistakable trail.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" data-cursor="SCENT">
+            <div class="img-wrapper" style="height: 640px;">
+              <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=80" alt="Veloura Fragrance Bottle" onerror="handleImgError(this, 'NOIR ESSENCE')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Haute Parfumerie</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEAUTY CATEGORIES -->
+    <section class="section-padding" id="categories">
+      <div class="container">
+        <div style="margin-bottom: 4rem;" class="reveal">
+          <span class="eyebrow">DISCOVER BY DISCIPLINE</span>
+          <h2 class="heading-lg">BEAUTY CATEGORIES</h2>
+        </div>
+
+        <div class="categories-grid">
+          <div class="category-card reveal" data-cursor="EXPLORE">
+            <div class="category-bg">
+              <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Skincare Category" onerror="handleImgError(this, 'SKINCARE')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Skin</span></div>
+            </div>
+            <div class="category-content">
+              <h3 class="category-name">SKIN</h3>
+              <a href="#collection" class="category-link-text">EXPLORE FORMULAS &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-card reveal" data-cursor="EXPLORE">
+            <div class="category-bg">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Makeup Category" onerror="handleImgError(this, 'MAKEUP')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Makeup</span></div>
+            </div>
+            <div class="category-content">
+              <h3 class="category-name">MAKEUP</h3>
+              <a href="#collection" class="category-link-text">EXPLORE COUTURE &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-card reveal" data-cursor="EXPLORE">
+            <div class="category-bg">
+              <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" alt="Fragrance Category" onerror="handleImgError(this, 'FRAGRANCE')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Fragrance</span></div>
+            </div>
+            <div class="category-content">
+              <h3 class="category-name">FRAGRANCE</h3>
+              <a href="#collection" class="category-link-text">EXPLORE ESSENCES &rarr;</a>
+            </div>
+          </div>
+
+          <div class="category-card reveal" data-cursor="EXPLORE">
+            <div class="category-bg">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Body Category" onerror="handleImgError(this, 'BODY')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Body</span></div>
+            </div>
+            <div class="category-content">
+              <h3 class="category-name">BODY</h3>
+              <a href="#collection" class="category-link-text">EXPLORE ELIXIRS &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP SIGNATURE SPOTLIGHT -->
+    <section class="signature-section section-padding" id="signature">
+      <div class="container">
+        <div class="signature-grid">
+          <div class="signature-image-container reveal" data-cursor="HERO">
+            <div class="img-wrapper signature-main-img">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=80" alt="Veloura No 01 Serum" onerror="handleImgError(this, 'NO. 01 SERUM')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>No.01 Luminous Serum</span></div>
+            </div>
+            <div class="signature-badge">FLAGSHIP EDITION</div>
+          </div>
+
+          <div class="signature-details reveal">
+            <span class="eyebrow eyebrow-light">VELOURA NO.01</span>
+            <h2 class="signature-title">LUMINOUS SKIN SERUM</h2>
+            <div class="signature-subtitle">"Radiance, distilled."</div>
+            
+            <p class="signature-description">
+              A masterwork of botanical bio-fermentation and pure molecular hyaluronic acid. Formulated to restore light, firmness, and supreme vitality to demanding complexions.
+            </p>
+
+            <div class="ingredients-list">
+              <div>
+                <div class="ingredient-item-title">BLACK TRUFFLE EXTRACT</div>
+                <div class="ingredient-item-desc">Promotes deep cellular repair & collagen resilience.</div>
+              </div>
+              <div>
+                <div class="ingredient-item-title">24K GOLD PEPTIDES</div>
+                <div class="ingredient-item-desc">Infuses immediate luminescence and smooths micro-texture.</div>
+              </div>
+              <div>
+                <div class="ingredient-item-title">SWISS ALPINE ROSE</div>
+                <div class="ingredient-item-desc">Protects skin barrier against environmental stressors.</div>
+              </div>
+              <div>
+                <div class="ingredient-item-title">SACRED IRIS OIL</div>
+                <div class="ingredient-item-desc">Yields a delicate, signature sensory aroma.</div>
+              </div>
+            </div>
+
+            <button class="btn btn-light" onclick="openModalById(1)" data-cursor="BUY">ACQUIRE NO. 01 — $120</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VELOURA JOURNAL / MAGAZINE -->
+    <section class="section-padding" id="journal">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem;" class="reveal">
+          <div>
+            <span class="eyebrow">EDITORIAL STORIES</span>
+            <h2 class="heading-lg">THE JOURNAL</h2>
+          </div>
+          <a href="#" class="btn btn-secondary" onclick="event.preventDefault(); showToast('Subscribed to Veloura Editorial Releases');">VIEW ALL STORIES</a>
+        </div>
+
+        <div class="journal-grid">
+          <div class="journal-card reveal">
+            <div class="img-wrapper journal-img-box">
+              <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80" alt="Journal Article 1" onerror="handleImgError(this, 'JOURNAL 01')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>The Art of Fermentation</span></div>
+            </div>
+            <span class="journal-date">MAY 2026 — FORMULATION</span>
+            <h3 class="journal-title">The Art of Slow Fermentation in Skincare</h3>
+            <p class="journal-snippet">How cold bio-fermentation yields bio-available actives that penetrate deep beneath the skin’s lipid barrier.</p>
+          </div>
+
+          <div class="journal-card reveal">
+            <div class="img-wrapper journal-img-box">
+              <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80" alt="Journal Article 2" onerror="handleImgError(this, 'JOURNAL 02')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Portrait of a Perfumer</span></div>
+            </div>
+            <span class="journal-date">APRIL 2026 — PARFUM</span>
+            <h3 class="journal-title">Portrait of a Perfumer: Master Notes of Grasse</h3>
+            <p class="journal-snippet">Inside our private flower fields in the South of France during the brief midnight harvest of Sacred Iris.</p>
+          </div>
+
+          <div class="journal-card reveal">
+            <div class="img-wrapper journal-img-box">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80" alt="Journal Article 3" onerror="handleImgError(this, 'JOURNAL 03')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Subtle Luminescence</span></div>
+            </div>
+            <span class="journal-date">MARCH 2026 — COUTURE</span>
+            <h3 class="journal-title">Subtle Luminescence: Spring Runway Rituals</h3>
+            <p class="journal-snippet">Behind the scenes at Paris Fashion Week: creating weightless glow that catches camera flash naturally.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESS ACCOLADES SLIDER / QUOTE -->
+    <section class="press-section section-padding">
+      <div class="container">
+        <div class="press-quote-box reveal">
+          <div class="press-quote">"Veloura has quietly rewritten the rules of modern luxury beauty. Pure refinement in glass."</div>
+          <div class="press-author">VOGUE INTERNATIONAL — BEAUTY EDIT 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVATE ATELIER CONSULTATION -->
+    <section class="atelier-section section-padding" id="atelier">
+      <div class="container">
+        <div class="atelier-grid">
+          <div class="reveal">
+            <span class="eyebrow">PRIVATE APPOINTMENTS</span>
+            <h2 class="heading-lg" style="margin-bottom: 1.5rem;">THE PARIS ATELIER</h2>
+            <p style="color: var(--text-muted-dark); line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300;">
+              Experience a private one-on-one skincare consultation or custom fragrance pairing in our historic salon on Place Vendôme, Paris.
+            </p>
+            <button class="btn btn-primary" onclick="showToast('Consultation Desk Contacted — We will reach out via Email.')">BOOK A PRIVATE CONSULTATION</button>
+          </div>
+
+          <div class="reveal" data-cursor="ATELIER">
+            <div class="img-wrapper atelier-img-box">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80" alt="Paris Atelier Salon" onerror="handleImgError(this, 'PLACE VENDOME')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>Place Vendôme Salon</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND RITUALS -->
+    <section class="section-padding" id="rituals">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" class="reveal">
+          <span class="eyebrow">THE THREE PRINCIPLES</span>
+          <h2 class="heading-lg">THE VELOURA RITUAL</h2>
+        </div>
+
+        <div class="ritual-grid">
+          <div class="ritual-card reveal">
+            <div class="ritual-number">01</div>
+            <h3 class="ritual-title">CRAFT</h3>
+            <p class="ritual-text">Every detail begins with intention. From raw organic botanical sourcing to sustainable French glass manufacturing, zero compromises are made.</p>
+          </div>
+
+          <div class="ritual-card reveal">
+            <div class="ritual-number">02</div>
+            <h3 class="ritual-title">RITUAL</h3>
+            <p class="ritual-text">Beauty becomes meaningful through slow repetition. Our textures transform everyday skincare routines into mindful artistic ceremonies.</p>
+          </div>
+
+          <div class="ritual-card reveal">
+            <div class="ritual-number">03</div>
+            <h3 class="ritual-title">SIGNATURE</h3>
+            <p class="ritual-text">Your beauty should feel unmistakably yours. Formulas adapt seamlessly to your skin's unique chemistry rather than masking it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY MANIFESTO -->
+    <section class="story-section section-padding" id="story">
+      <div class="container">
+        <div class="story-content reveal">
+          <span class="eyebrow eyebrow-light">MANIFESTO</span>
+          <h2 class="story-headline">BEAUTY IS AN ART.</h2>
+          <p class="story-body">
+            "Veloura exists to transform everyday beauty into something extraordinary. Every formula, texture, and detail is considered with intention — creating products that belong as naturally in your ritual as they do in your world."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section section-padding">
+      <div class="container">
+        <div class="newsletter-box reveal">
+          <h2 class="newsletter-title">ENTER THE WORLD OF VELOURA</h2>
+          <p class="newsletter-subtitle">Receive private access to new collections, beauty rituals, and stories from the house.</p>
+          
+          <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to Veloura Private Access'); this.reset();">
+            <input type="email" class="newsletter-input" placeholder="YOUR EMAIL ADDRESS" required>
+            <button type="submit" class="newsletter-submit">JOIN THE HOUSE</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-title">VELOURA</div>
+          <p class="footer-tagline">"Beauty, Refined."</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">SHOP</div>
+          <div class="footer-links">
+            <a href="#collection" class="footer-link">New Arrivals</a>
+            <a href="#collection" class="footer-link">Skin Care</a>
+            <a href="#collection" class="footer-link">Makeup Collection</a>
+            <a href="#fragrance" class="footer-link">Fragrance & Extraits</a>
+            <a href="#collection" class="footer-link">Best Sellers</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">THE HOUSE</div>
+          <div class="footer-links">
+            <a href="#story" class="footer-link">Our Story</a>
+            <a href="#philosophy" class="footer-link">Philosophy</a>
+            <a href="#journal" class="footer-link">Journal & Stories</a>
+            <a href="#atelier" class="footer-link">Paris Atelier</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">CLIENT SERVICES</div>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Contact Atelier</a>
+            <a href="#" class="footer-link">Complimentary Shipping</a>
+            <a href="#" class="footer-link">Returns & Exchanges</a>
+            <a href="#" class="footer-link">FAQ</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">SOCIAL</div>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">TikTok</a>
+            <a href="#" class="footer-link">Pinterest</a>
+            <a href="#" class="footer-link">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VELOURA PARIS. ALL RIGHTS RESERVED.</div>
+        <div class="footer-legal">
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <a href="#" class="footer-link">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     JAVASCRIPT
+     ========================================================================== -->
+  <script>
+    /* Image Error Fallback Handler */
+    function handleImgError(imgEl, title) {
+      imgEl.style.display = 'none';
+      const fallback = imgEl.parentElement.querySelector('.img-fallback');
+      if (fallback) {
+        if (title) fallback.querySelector('span').textContent = title;
+        fallback.style.display = 'flex';
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       1. EXPANDED PRODUCT DATASET (10 HIGH-END LUXURY PRODUCTS)
+       -------------------------------------------------------------------------- */
+    const PRODUCTS = [
+      {
+        id: 1,
+        number: 'Veloura No.01',
+        title: 'Luminous Skin Serum',
+        category: 'skin',
+        price: 120,
+        image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80',
+        description: 'An ultra-concentrated elixir infused with 24K gold peptides and black truffle extract designed to restore skin luminescence.'
+      },
+      {
+        id: 2,
+        number: 'Veloura No.02',
+        title: 'Silk Veil Foundation',
+        category: 'makeup',
+        price: 95,
+        image: 'https://images.unsplash.com/photo-1608248597263-000796df9c11?auto=format&fit=crop&w=800&q=80',
+        description: 'Weightless medium-to-full fluid foundation offering a luminous semi-matte finish that breathes with your skin.'
+      },
+      {
+        id: 3,
+        number: 'Veloura No.03',
+        title: 'Éclat Lip Color',
+        category: 'makeup',
+        price: 65,
+        image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80',
+        description: 'High-pigment, satin lipstick enriched with cold-pressed rosehip oil and botanical squalane for couture comfort.'
+      },
+      {
+        id: 4,
+        number: 'Veloura No.04',
+        title: 'Noir Essence Perfume',
+        category: 'fragrance',
+        price: 180,
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80',
+        description: 'An enigmatic blend of dark amber, iris root, and smoked vanilla harvested from French orchid reserves.'
+      },
+      {
+        id: 5,
+        number: 'Veloura No.05',
+        title: 'Renewal Eye Cream',
+        category: 'skin',
+        price: 110,
+        image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=80',
+        description: 'Velvety cream contour that reduces dark circles and micro-lines with Swiss alpine rose extracts.'
+      },
+      {
+        id: 6,
+        number: 'Veloura No.06',
+        title: 'Celestial Body Oil',
+        category: 'skin',
+        price: 88,
+        image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=800&q=80',
+        description: 'Silky dry oil leaving a subtle gold sheen and deep moisture without grease.'
+      },
+      {
+        id: 7,
+        number: 'Veloura No.07',
+        title: 'Royal Iris Extrait',
+        category: 'fragrance',
+        price: 240,
+        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80',
+        description: 'Our most concentrated fragrance formulation showcasing Florentine Sacred Iris and rare white musk.'
+      },
+      {
+        id: 8,
+        number: 'Veloura No.08',
+        title: 'Rose Quartz Gua Sha & Elixir Set',
+        category: 'gifting',
+        price: 160,
+        image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=80',
+        description: 'Hand-carved Rose Quartz sculpting tool presented alongside our signature botanical facial elixir.'
+      },
+      {
+        id: 9,
+        number: 'Veloura No.09',
+        title: 'Velvet Matte Lip Stain',
+        category: 'makeup',
+        price: 58,
+        image: 'https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?auto=format&fit=crop&w=800&q=80',
+        description: 'Long-wearing featherlight lip stain with velvety matte color and botanical hydration.'
+      },
+      {
+        id: 10,
+        number: 'Veloura No.10',
+        title: 'Night Repair Nectar',
+        category: 'skin',
+        price: 145,
+        image: 'https://images.unsplash.com/photo-1608248597263-000796df9c11?auto=format&fit=crop&w=800&q=80',
+        description: 'Overnight cell-restoration treatment that works during sleep cycles to restore skin density and elasticity.'
+      }
+    ];
+
+    /* --------------------------------------------------------------------------
+       2. STATE MANAGEMENT & LOCAL STORAGE
+       -------------------------------------------------------------------------- */
+    let cart = JSON.parse(localStorage.getItem('veloura_cart')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('veloura_wishlist')) || [];
+
+    function saveState() {
+      localStorage.setItem('veloura_cart', JSON.stringify(cart));
+      localStorage.setItem('veloura_wishlist', JSON.stringify(wishlist));
+      updateCartUI();
+    }
+
+    /* --------------------------------------------------------------------------
+       3. CUSTOM CURSOR
+       -------------------------------------------------------------------------- */
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorFollower = document.getElementById('cursor-follower');
+    const cursorText = document.getElementById('cursor-text');
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    });
+
+    function renderCursor() {
+      followerX += (mouseX - followerX) * 0.15;
+      followerY += (mouseY - followerY) * 0.15;
+      cursorFollower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    document.querySelectorAll('[data-cursor]').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.add('cursor-hover');
+        cursorText.textContent = el.getAttribute('data-cursor');
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('cursor-hover');
+        cursorText.textContent = '';
+      });
+    });
+
+    /* --------------------------------------------------------------------------
+       4. SCROLL REVEAL OBSERVER & HEADER SCROLL
+       -------------------------------------------------------------------------- */
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    /* --------------------------------------------------------------------------
+       5. PRODUCT GRID RENDER & FILTERING
+       -------------------------------------------------------------------------- */
+    const mainProductGrid = document.getElementById('main-product-grid');
+
+    function renderProducts(categoryFilter = 'all') {
+      mainProductGrid.innerHTML = '';
+      const filtered = categoryFilter === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === categoryFilter);
+
+      filtered.forEach(p => {
+        const isWishlisted = wishlist.includes(p.id);
+        const card = document.createElement('div');
+        card.className = 'product-card reveal active';
+        card.setAttribute('data-cursor', 'VIEW');
+        
+        card.innerHTML = `
+          <div class="product-image-box">
+            <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist(${p.id}, event)" title="Wishlist">
+              ♥
+            </button>
+            <div class="img-wrapper">
+              <img src="${p.image}" alt="${p.title}" onerror="handleImgError(this, '${p.title}')">
+              <div class="img-fallback"><div class="img-fallback-logo">VELOURA</div><span>${p.title}</span></div>
+            </div>
+            <div class="product-card-overlay">
+              <div class="quick-actions">
+                <button class="quick-btn" onclick="openModalById(${p.id})">Quick View</button>
+                <button class="quick-btn" onclick="addToCart(${p.id})">+ Bag</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-number">${p.number}</span>
+            <h3 class="product-title">${p.title}</h3>
+            <div class="product-meta">
+              <span class="product-category">${p.category.toUpperCase()}</span>
+              <span class="product-price">$${p.price}</span>
+            </div>
+          </div>
+        `;
+        mainProductGrid.appendChild(card);
+      });
+    }
+
+    renderProducts();
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        renderProducts(e.target.getAttribute('data-filter'));
+      });
+    });
+
+    /* --------------------------------------------------------------------------
+       6. SHADE FINDER QUIZ FUNCTION
+       -------------------------------------------------------------------------- */
+    function runShadeFinder(preference) {
+      let matchedId = 1;
+      if (preference === 'radiance') matchedId = 1;
+      if (preference === 'velvet') matchedId = 2;
+      if (preference === 'hydrating') matchedId = 5;
+
+      showToast('Formula Diagnosis Complete');
+      setTimeout(() => openModalById(matchedId), 600);
+    }
+
+    /* --------------------------------------------------------------------------
+       7. WISHLIST & TOAST
+       -------------------------------------------------------------------------- */
+    function toggleWishlist(productId, event) {
+      event.stopPropagation();
+      if(wishlist.includes(productId)) {
+        wishlist = wishlist.filter(id => id !== productId);
+        showToast('Removed from Wishlist');
+      } else {
+        wishlist.push(productId);
+        showToast('Saved to Wishlist');
+      }
+      saveState();
+      renderProducts(document.querySelector('.filter-btn.active').getAttribute('data-filter'));
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    /* --------------------------------------------------------------------------
+       8. SHOPPING CART SYSTEM
+       -------------------------------------------------------------------------- */
+    const backdrop = document.getElementById('backdrop');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartCountEl = document.getElementById('cart-count');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartSubtotalVal = document.getElementById('cart-subtotal-val');
+
+    document.getElementById('open-cart').addEventListener('click', () => openCart());
+    document.getElementById('close-cart').addEventListener('click', () => closeCart());
+    backdrop.addEventListener('click', () => {
+      closeCart();
+      closeSearch();
+      closeModal();
+    });
+
+    function openCart() {
+      cartDrawer.classList.add('active');
+      backdrop.classList.add('active');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('active');
+      backdrop.classList.remove('active');
+    }
+
+    function addToCart(productId) {
+      const existing = cart.find(item => item.id === productId);
+      if(existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: productId, qty: 1 });
+      }
+      saveState();
+      showToast('Added to Bag');
+      openCart();
+    }
+
+    function updateQty(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if(item) {
+        item.qty += delta;
+        if(item.qty <= 0) {
+          cart = cart.filter(i => i.id !== productId);
+        }
+      }
+      saveState();
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(i => i.id !== productId);
+      saveState();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      cartCountEl.textContent = totalCount;
+
+      if(cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="cart-empty-msg">Your bag is currently empty.</p>';
+        cartSubtotalVal.textContent = '$0';
+        return;
+      }
+
+      let subtotal = 0;
+      cartItemsContainer.innerHTML = '';
+
+      cart.forEach(item => {
+        const prod = PRODUCTS.find(p => p.id === item.id);
+        if(!prod) return;
+        
+        const itemTotal = prod.price * item.qty;
+        subtotal += itemTotal;
+
+        const cartItemEl = document.createElement('div');
+        cartItemEl.className = 'cart-item';
+        cartItemEl.innerHTML = `
+          <div class="cart-item-img-box">
+            <div class="img-wrapper">
+              <img src="${prod.image}" alt="${prod.title}" onerror="handleImgError(this, '${prod.title}')">
+              <div class="img-fallback"><div class="img-fallback-logo">V</div></div>
+            </div>
+          </div>
+          <div class="cart-item-details">
+            <div>
+              <h4 class="cart-item-title">${prod.title}</h4>
+              <div class="cart-item-price">$${prod.price}</div>
+            </div>
+            <div class="cart-item-actions" style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="quantity-selector">
+                <button class="qty-btn" onclick="updateQty(${prod.id}, -1)">-</button>
+                <span class="qty-num">${item.qty}</span>
+                <button class="qty-btn" onclick="updateQty(${prod.id}, 1)">+</button>
+              </div>
+              <span class="remove-item" onclick="removeFromCart(${prod.id})">Remove</span>
+            </div>
+          </div>
+        `;
+        cartItemsContainer.appendChild(cartItemEl);
+      });
+
+      cartSubtotalVal.textContent = `$${subtotal}`;
+    }
+
+    /* --------------------------------------------------------------------------
+       9. PRODUCT DETAIL MODAL
+       -------------------------------------------------------------------------- */
+    const productModalBackdrop = document.getElementById('product-modal-backdrop');
+    const modalImg = document.getElementById('modal-img');
+    const modalNumber = document.getElementById('modal-number');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPrice = document.getElementById('modal-price');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalAddBtn = document.getElementById('modal-add-btn');
+
+    function openModalById(id) {
+      const prod = PRODUCTS.find(p => p.id === id);
+      if(!prod) return;
+
+      modalImg.src = prod.image;
+      modalNumber.textContent = prod.number;
+      modalTitle.textContent = prod.title;
+      modalPrice.textContent = `$${prod.price}`;
+      modalDesc.textContent = prod.description;
+      
+      modalAddBtn.onclick = () => {
+        addToCart(prod.id);
+        closeModal();
+      };
+
+      productModalBackdrop.classList.add('active');
+    }
+
+    function closeModal() {
+      productModalBackdrop.classList.remove('active');
+    }
+
+    document.getElementById('close-product-modal').addEventListener('click', closeModal);
+
+    /* --------------------------------------------------------------------------
+       10. SEARCH OVERLAY
+       -------------------------------------------------------------------------- */
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('search-input');
+    const searchResultsGrid = document.getElementById('search-results');
+
+    document.getElementById('open-search').addEventListener('click', () => {
+      searchOverlay.classList.add('active');
+      setTimeout(() => searchInput.focus(), 100);
+    });
+
+    document.getElementById('close-search').addEventListener('click', closeSearch);
+
+    function closeSearch() {
+      searchOverlay.classList.remove('active');
+      searchInput.value = '';
+      searchResultsGrid.innerHTML = '';
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if(query === '') {
+        searchResultsGrid.innerHTML = '';
+        return;
+      }
+
+      const results = PRODUCTS.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.category.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query)
+      );
+
+      searchResultsGrid.innerHTML = '';
+      results.forEach(p => {
+        const item = document.createElement('div');
+        item.style.cursor = 'pointer';
+        item.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+        item.style.paddingBottom = '1rem';
+        item.innerHTML = `
+          <span style="font-size:0.65rem; color:var(--gold); font-weight:600;">${p.number}</span>
+          <h4 style="font-family:var(--font-serif); font-size:1.2rem; margin:0.3rem 0;">${p.title}</h4>
+          <span style="font-size:0.85rem; color:var(--text-muted-light);">$${p.price}</span>
+        `;
+        item.onclick = () => {
+          closeSearch();
+          openModalById(p.id);
+        };
+        searchResultsGrid.appendChild(item);
+      });
+    });
+
+    document.querySelectorAll('.tag-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tag = btn.getAttribute('data-search');
+        searchInput.value = tag;
+        searchInput.dispatchEvent(new Event('input'));
+      });
+    });
+
+    /* --------------------------------------------------------------------------
+       11. MOBILE MENU
+       -------------------------------------------------------------------------- */
+    const mobileTrigger = document.getElementById('mobile-trigger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    mobileTrigger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.mobile-close-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    /* Initialize Cart UI on Load */
+    saveState();
+  </script>
+</body>
+</html>
